@@ -21,8 +21,6 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields
 
-  console.log(formFields)
-
   const resetFormFields = () => {
     setFormFields(defaultFormFields)
   }
@@ -43,7 +41,13 @@ const SignInForm = () => {
       console.log(response)
       resetFormFields()
 
-    } catch (error) { }
+    } catch (error) {
+      if (error.code === 'auth/invalid-credential') {
+        alert('incorrect email or password')
+      } else {
+        console.log(error)
+      }
+    }
 
   }
 

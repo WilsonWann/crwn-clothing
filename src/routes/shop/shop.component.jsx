@@ -11,6 +11,7 @@ const Shop = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log('Hello world!')
     dispatch(fetchCategoriesStart())
   }, [])
 

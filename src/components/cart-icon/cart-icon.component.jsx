@@ -5,8 +5,8 @@ import {
   ShoppingIcon,
   ItemCount
 } from "./cart-icon.styles.js"
-import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart.selector.js'
-import { setIsCartOpen } from '../../store/cart/cart.action.js'
+import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart.selector'
+import { setIsCartOpen } from '../../store/cart/cart.action'
 
 const CartIcon = () => {
   const dispatch = useDispatch()

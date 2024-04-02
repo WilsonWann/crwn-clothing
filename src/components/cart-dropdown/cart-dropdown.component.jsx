@@ -10,7 +10,7 @@ import {
   EmptyMessage,
   CartItems,
 } from "./cart-dropdown.styles.js"
-import { selectCartItems } from "../../store/cart/cart.selector.js"
+import { selectCartItems } from "../../store/cart/cart.selector"
 
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems)

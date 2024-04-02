@@ -2,7 +2,7 @@ import { takeLatest, all, call, put } from "redux-saga/effects"
 
 import { USER_ACTION_TYPES } from "./user.types"
 
-import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, signOutSuccess, signOutFailed } from "./user.action"
+import { signInSuccess, signInFailed, signUpSuccess, signUpFailed, SignOutSuccess, signOutFailed } from "./user.action"
 
 import {
   getCurrentUser,

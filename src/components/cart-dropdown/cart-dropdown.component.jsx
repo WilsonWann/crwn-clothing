@@ -9,7 +9,7 @@ import {
   CartDropdownContainer,
   EmptyMessage,
   CartItems,
-} from "./cart-dropdown.styles.js"
+} from "./cart-dropdown.styles"
 import { selectCartItems } from "../../store/cart/cart.selector"
 
 const CartDropdown = () => {

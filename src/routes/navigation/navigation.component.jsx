@@ -14,7 +14,7 @@ import {
   NavLinksContainer,
   NavLink,
   LogoContainer,
-} from "./navigation.styles.js"
+} from "./navigation.styles"
 import { selectIsCartOpen } from '../../store/cart/cart.selector'
 
 const Navigation = () => {

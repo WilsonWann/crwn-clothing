@@ -3,6 +3,12 @@ import { screen } from "@testing-library/react";
 import Navigation from "../navigation.component";
 import { renderWithProviders } from "../../../utils/test/test.utils";
 
+jest.mock('react-redux', () => ({
+  __esModule: true,
+  // @ts-ignore
+  ...jest.requireActual('react-redux'),
+}));
+
 describe('Navigation tests', () => {
   test('It should render a Sign in link and not a Sign out link if there is no currentUser', () => {
     renderWithProviders(<Navigation />, {

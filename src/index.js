@@ -10,7 +10,7 @@ import { store, persistor } from "./store/store"
 import { stripePromise } from './utils/stripe/stripe.utils';
 
 import * as serviceWorkerRegister from "./serviceWorkerRegistration"
-
+import "./i18n";
 
 // import reportWebVitals from './reportWebVitals';
 

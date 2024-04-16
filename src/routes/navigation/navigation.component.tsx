@@ -16,6 +16,17 @@ import {
   LogoContainer,
 } from './navigation.styles';
 import { selectIsCartOpen } from '../../store/cart/cart.selector';
+import { useTranslation } from 'react-i18next';
+import Select, { type ActionMeta } from 'react-select';
+
+type OptionProps = {
+  value: string;
+  label: string;
+};
+const options: OptionProps[] = [
+  { value: 'en', label: 'English' },
+  { value: 'zh-tw', label: '繁體中文' },
+];
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -23,21 +34,37 @@ const Navigation = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
 
   const signOutUser = () => dispatch(signOutStart());
+  const { t, i18n } = useTranslation();
+
+  const onSelectorChange = (
+    item: OptionProps | null,
+    actionMeta: ActionMeta<OptionProps>,
+  ) => {
+    if (!item) return;
+    i18n.changeLanguage(item.value);
+  };
+
   return (
     <>
       <NavigationContainer>
-        <LogoContainer to='/'>
+        <LogoContainer to='/' title={t('logo')}>
           <CrwnLogo className={'logo'} />
         </LogoContainer>
         <NavLinksContainer>
-          <NavLink to='/shop'>Shop</NavLink>
+          <NavLink to='/shop'>{t('Shop')}</NavLink>
           {currentUser ? (
             <NavLink as='span' onClick={signOutUser}>
-              Sign Out
+              {t('Sign Out')}
             </NavLink>
           ) : (
-            <NavLink to='/auth'>Sign In</NavLink>
+            <NavLink to='/auth'> {t('Sign In')}</NavLink>
           )}
+
+          <Select
+            defaultValue={options[0]}
+            onChange={onSelectorChange}
+            options={options}
+          />
           <CartIcon />
         </NavLinksContainer>
         {isCartOpen && <CartDropdown />}

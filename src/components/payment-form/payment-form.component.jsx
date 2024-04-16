@@ -12,6 +12,7 @@ import {
   FormContainer,
   PaymentButton,
 } from './payment-form.styles';
+import { useTranslation } from 'react-i18next';
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -19,6 +20,8 @@ const PaymentForm = () => {
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+
+  const { t } = useTranslation()
 
   const paymentHandler = async (e) => {
     e.preventDefault();
@@ -70,7 +73,7 @@ const PaymentForm = () => {
           isLoading={isProcessingPayment}
           buttonType={BUTTON_TYPE_CLASSES.inverted}
         >
-          Pay now
+          {t("Pay now")}
         </PaymentButton>
       </FormContainer>
     </PaymentFormContainer>

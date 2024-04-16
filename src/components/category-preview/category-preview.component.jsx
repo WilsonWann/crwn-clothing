@@ -5,13 +5,17 @@ import {
   Title,
   Preview
 } from "./category-preview.styles"
+import { useTranslation } from "react-i18next"
 
 const CategoryPreview = ({ title, products }) => {
+
+  const { t } = useTranslation()
+
   return (
     <CategoryPreviewContainer>
       <h2>
         <Title to={title}>
-          {title.toUpperCase()}
+          {t(title)}
         </Title>
       </h2>
       <Preview>

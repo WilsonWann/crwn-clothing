@@ -7,6 +7,7 @@ import {
   Body,
 } from './directory-item.styles';
 import { Category } from '../../store/categories/categories.types';
+import { useTranslation } from 'react-i18next';
 
 type DirectoryItemProps = {
   category: {
@@ -19,13 +20,14 @@ const DirectoryItem: FC<DirectoryItemProps> = ({ category }) => {
   const navigate = useNavigate();
 
   const onNavigateHandler = () => navigate(route);
+  const { t, i18n } = useTranslation();
 
   return (
     <DirectoryItemContainer onClick={onNavigateHandler}>
       <BackgroundImage $imageUrl={imageUrl} />
       <Body>
-        <h2>{title}</h2>
-        <p>Shop Now</p>
+        <h2>{t(title)}</h2>
+        <p>{t('shop now')}</p>
       </Body>
     </DirectoryItemContainer>
   );

@@ -10,6 +10,8 @@ import {
   googleSignInStart,
 } from '../../store/user/user.action';
 
+import { useTranslation } from 'react-i18next';
+
 const defaultFormFields = {
   email: '',
   password: '',
@@ -24,6 +26,8 @@ const SignInForm = () => {
   const resetFormFields = () => setFormFields(defaultFormFields);
 
   const signInWithGoogle = () => dispatch(googleSignInStart());
+
+  const { t } = useTranslation();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,11 +48,11 @@ const SignInForm = () => {
 
   return (
     <SignInContainer>
-      <h2>Already have an account?</h2>
-      <span>Sign in with your email and password</span>
+      <h2>{t('Already have an account?')}</h2>
+      <span>{t('Sign in with your email and password')}</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-          label={'Email'}
+          label={t('Email')}
           type='email'
           required
           onChange={handleChange}
@@ -57,7 +61,7 @@ const SignInForm = () => {
         />
 
         <FormInput
-          label={'Password'}
+          label={t('Password')}
           type='password'
           required
           onChange={handleChange}
@@ -65,13 +69,13 @@ const SignInForm = () => {
           value={password}
         />
         <ButtonsContainer>
-          <Button type='submit'>Sign In</Button>
+          <Button type='submit'>{t('Sign In')}</Button>
           <Button
             type='button'
             buttonType={BUTTON_TYPE_CLASSES.google}
             onClick={signInWithGoogle}
           >
-            Sign In With Google
+            {t('Sign In With Google')}
           </Button>
         </ButtonsContainer>
       </form>

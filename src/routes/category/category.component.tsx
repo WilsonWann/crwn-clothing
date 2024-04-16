@@ -11,6 +11,7 @@ import {
 } from '../../store/categories/categories.selector';
 
 import { CategoryContainer, Title } from './category.styles';
+import { useTranslation } from 'react-i18next';
 
 type CategoryRouteParams = {
   category: string;
@@ -23,13 +24,15 @@ const Category = () => {
   const isLoading = useSelector(selectCategoriesIsLoading);
   const [products, setProducts] = useState(categoriesMap[category]);
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
 
   return (
     <Fragment>
-      <Title>{category.toUpperCase()}</Title>
+      <Title>{t(category)}</Title>
       {isLoading ? (
         <Spinner />
       ) : (

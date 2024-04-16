@@ -12,6 +12,7 @@ import {
   CartItems,
 } from "./cart-dropdown.styles"
 import { selectCartItems } from "../../store/cart/cart.selector"
+import { useTranslation } from "react-i18next"
 
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems)
@@ -20,6 +21,8 @@ const CartDropdown = () => {
   const goToCheckoutHandler = useCallback(() => {
     navigate('/checkout')
   }, [])
+
+  const { t } = useTranslation()
 
   return (
     <CartDropdownContainer>
@@ -30,7 +33,7 @@ const CartDropdown = () => {
             : (<EmptyMessage>Your cart is empty</EmptyMessage>)
         }
       </CartItems>
-      <Button onClick={goToCheckoutHandler}>GO TO CHECKOUT</Button>
+      <Button onClick={goToCheckoutHandler}>{t("go to checkout")}</Button>
     </CartDropdownContainer>
   )
 }

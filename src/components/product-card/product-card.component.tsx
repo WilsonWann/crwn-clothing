@@ -13,6 +13,8 @@ import { addItemToCart } from '../../store/cart/cart.action';
 import { selectCartItems } from '../../store/cart/cart.selector';
 import { CategoryItem } from '../../store/categories/categories.types';
 
+import { useTranslation } from 'react-i18next';
+
 type ProductCartProps = {
   product: CategoryItem;
 };
@@ -25,6 +27,8 @@ const ProductCard: FC<ProductCartProps> = ({ product }) => {
 
   const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
 
+  const { t } = useTranslation();
+
   return (
     <ProductCardContainer>
       <img src={imageUrl} alt={`${name}`} />
@@ -36,7 +40,7 @@ const ProductCard: FC<ProductCartProps> = ({ product }) => {
         buttonType={BUTTON_TYPE_CLASSES.inverted}
         onClick={addProductToCart}
       >
-        Add to cart
+        {t('Add to cart')}
       </Button>
     </ProductCardContainer>
   );

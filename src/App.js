@@ -11,6 +11,7 @@ const Navigation = lazy(() => import("./routes/navigation/navigation.component")
 const Home = lazy(() => import('./routes/home/home.component'))
 const Shop = lazy(() => import("./routes/shop/shop.component"))
 const Authentication = lazy(() => import("./routes/authentication/authentication.component"))
+const UserInfo = lazy(() => import("./routes/user-info/user-info.component"))
 const Checkout = lazy(() => import("./routes/checkout/checkout.component"))
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="shop/*" element={<Shop />} />
           <Route path="auth" element={<Authentication />} />
+          <Route path="user" element={<UserInfo />} />
           <Route path="checkout" element={<Checkout />} />
         </Route>
       </Routes>

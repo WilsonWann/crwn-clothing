@@ -27,5 +27,6 @@
   "Display Name": "暱稱",
   "Email": "Email",
   "Password": "密碼",
-  "Confirm Password": "密碼確認"
+  "Confirm Password": "密碼確認",
+  "Create Date": "建立時間"
 }

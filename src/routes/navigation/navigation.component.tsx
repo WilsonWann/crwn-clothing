@@ -51,6 +51,9 @@ const Navigation = () => {
           <CrwnLogo className={'logo'} />
         </LogoContainer>
         <NavLinksContainer>
+          {currentUser ? (
+            <NavLink to='user'>{`Good morning, Mr. ${currentUser.displayName}`}</NavLink>
+          ) : null}
           <NavLink to='/shop'>{t('Shop')}</NavLink>
           {currentUser ? (
             <NavLink as='span' onClick={signOutUser}>

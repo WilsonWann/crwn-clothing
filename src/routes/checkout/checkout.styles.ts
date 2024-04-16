@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components/macro"
 
 export const CheckContainer = styled.div`
   width: 55%;

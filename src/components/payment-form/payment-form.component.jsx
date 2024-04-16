@@ -1,45 +1,45 @@
-import { useState } from 'react'
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { useSelector } from 'react-redux'
+import { useState } from 'react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { useSelector } from 'react-redux';
 
-import { selectCartTotal } from '../../store/cart/cart.selector'
-import { selectCurrentUser } from '../../store/user/user.selector'
+import { selectCartTotal } from '../../store/cart/cart.selector';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
-import { BUTTON_TYPE_CLASSES } from '../button/button.component'
+import { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 import {
   PaymentFormContainer,
   FormContainer,
-  PaymentButton
-} from "./payment-form.styles"
+  PaymentButton,
+} from './payment-form.styles';
 
 const PaymentForm = () => {
-  const stripe = useStripe()
-  const elements = useElements()
-  const amount = useSelector(selectCartTotal)
-  const currentUser = useSelector(selectCurrentUser)
-  const [isProcessingPayment, setIsProcessingPayment] = useState(false)
+  const stripe = useStripe();
+  const elements = useElements();
+  const amount = useSelector(selectCartTotal);
+  const currentUser = useSelector(selectCurrentUser);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const paymentHandler = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!stripe || !elements) return
+    if (!stripe || !elements) return;
 
-    setIsProcessingPayment(true)
+    setIsProcessingPayment(true);
 
     const response = await fetch('/api/create-payment-intent', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ amount: amount * 100 })
-    }).then(res => res.json())
+      body: JSON.stringify({ amount: amount * 100 }),
+    }).then((res) => res.json());
 
     const {
-      paymentIntent: { client_secret }
-    } = response
+      paymentIntent: { client_secret },
+    } = response;
 
-    console.log('🚀 ~ paymentHandler ~ client_secret:', client_secret)
+    console.log('🚀 ~ paymentHandler ~ client_secret:', client_secret);
 
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
@@ -50,16 +50,16 @@ const PaymentForm = () => {
       },
     });
 
-    setIsProcessingPayment(false)
+    setIsProcessingPayment(false);
 
     if (paymentResult.error) {
-      alert(paymentResult.error)
+      alert(paymentResult.error);
     } else {
       if (paymentResult.paymentIntent.status === 'succeeded') {
-        alert('Payment Successful')
+        alert('Payment Successful');
       }
     }
-  }
+  };
 
   return (
     <PaymentFormContainer>
@@ -74,7 +74,7 @@ const PaymentForm = () => {
         </PaymentButton>
       </FormContainer>
     </PaymentFormContainer>
-  )
-}
+  );
+};
 
-export default PaymentForm
+export default PaymentForm;

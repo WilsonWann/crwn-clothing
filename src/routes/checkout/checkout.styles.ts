@@ -7,6 +7,13 @@ export const CheckContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 50px auto 0;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    padding: 10px 10px;
+    min-height: unset;
+    margin: 0 auto;
+  }
 `
 
 export const CheckHeader = styled.div`
@@ -15,6 +22,7 @@ export const CheckHeader = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid darkgrey;
+
 `
 
 export const HeaderBlock = styled.div`
@@ -29,4 +37,9 @@ export const Total = styled.span`
   margin-top: 30px;
   margin-left: auto;
   font-size: 36px;
+
+  @media screen and (max-width: 800px) {
+    margin-top: 10px;
+    font-size: 24px;
+  }
 `

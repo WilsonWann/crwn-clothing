@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Link } from "react-router-dom"
 
 
@@ -11,7 +11,7 @@ export const NavigationContainer = styled.div`
 
   @media screen and (max-width: 800px) {
     height: 60px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     margin-bottom: 20px;
   }
 `
